@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "40120705025",
+    "project_id": "hito-7",
+    "storage_bucket": "hito-7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40120705025:android:ce4be68ed6cc10c6e52000",
+        "android_client_info": {
+          "package_name": "com.example.hito7"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40120705025-op8lu3v6t3l308o1jcahmnmbs4sr8qlk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2kpgot8sK2E_7EJsPezDnrhfjIywj1XY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40120705025-op8lu3v6t3l308o1jcahmnmbs4sr8qlk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
