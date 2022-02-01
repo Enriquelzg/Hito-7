@@ -9,11 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView Login;
     private Button Log, register;
     private EditText correo, contraseña;
+    private DatabaseReference myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
