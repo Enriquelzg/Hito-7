@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Registro extends AppCompatActivity {
 
+    private static final String TAG = "HOLA";
     private TextView Login;
     private Button register;
     private EditText correo, contraseña, contraseña2;
@@ -53,6 +54,17 @@ public class Registro extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            reload();
+        }
+    }
+
     public void crearAcount (String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -73,4 +85,9 @@ public class Registro extends AppCompatActivity {
                     }
                 });
     }
+    public void  updateUI (FirebaseUser user){
+
+    }
+    private void reload() { }
+
 }
