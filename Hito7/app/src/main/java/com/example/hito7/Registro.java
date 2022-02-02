@@ -38,18 +38,19 @@ public class Registro extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         Login = findViewById(R.id.login2);
-        contraseña2 = findViewById(R.id.contraseña3);
         register = findViewById(R.id.register2);
         correo = findViewById(R.id.correo2);
         contraseña = findViewById(R.id.contraseña2);
         myDB = FirebaseDatabase.getInstance().getReference();
-        email = correo.toString();
-        password = contraseña.toString();
+
 
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
                 if (contraseña != null) {
-                    startActivity(new Intent(Registro.this, Registro.class));
+                    email = correo.getText().toString();
+                    password = contraseña.getText().toString();
+                    crearAcount(email,password);
+                    startActivity(new Intent(Registro.this, MainActivity.class));
                 }
             }
         });
