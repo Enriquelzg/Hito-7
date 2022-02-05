@@ -17,14 +17,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final Object TAG = "Hola";
     private TextView Login;
-    private Button Log, register;
+    private Button Log, register, borrar;
     private EditText correo, contraseña;
     private DatabaseReference myDB;
+    private FirebaseDatabase mFDB;
     private FirebaseAuth mAuth;
     private String email, password;
 
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        borrar = findViewById(R.id.eliminar);
         mAuth = FirebaseAuth.getInstance();
         Login = findViewById(R.id.login);
         Log = findViewById(R.id.boton);
@@ -51,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
                 startActivity(new Intent(MainActivity.this, Registro.class));
+            }
+        });
+
+        borrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

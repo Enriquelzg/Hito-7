@@ -29,7 +29,9 @@ public class Registro extends AppCompatActivity {
     private EditText correo, contraseña, contraseña2;
     private String email, password;
     private FirebaseAuth mAuth;
-    private DatabaseReference myDB;
+    private FirebaseDatabase myDB = FirebaseDatabase.getInstance();
+    private DatabaseReference mDataRef = myDB.getReference();
+    private LeerEscribir database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class Registro extends AppCompatActivity {
         register = findViewById(R.id.register2);
         correo = findViewById(R.id.correo2);
         contraseña = findViewById(R.id.contraseña2);
-        myDB = FirebaseDatabase.getInstance().getReference();
+        mDataRef = myDB.getReference();
 
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -75,20 +77,21 @@ public class Registro extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            database.writeNewUser(password, email);
+                            //escribirUsuario(user);
+                            //startActivity(new Intent(Registro.this, MainActivity.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(Registro.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                            database.writeNewUser(password, email);
+                            startActivity(new Intent(Registro.this, MainActivity.class));
                         }
                     }
                 });
     }
-    public void  updateUI (FirebaseUser user){
-
-    }
     private void reload() { }
+
 
 }
