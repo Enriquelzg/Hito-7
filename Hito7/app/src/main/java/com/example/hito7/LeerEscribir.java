@@ -13,7 +13,7 @@ public class LeerEscribir {
 
     public LeerEscribir(DatabaseReference database) {
         // [START initialize_database_ref]
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance("https://hito-7-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
         // [END initialize_database_ref]
     }
 

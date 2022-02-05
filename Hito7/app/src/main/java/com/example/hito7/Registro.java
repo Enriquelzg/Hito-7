@@ -38,6 +38,7 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
+        database = new LeerEscribir(mDataRef);
         mAuth = FirebaseAuth.getInstance();
         Login = findViewById(R.id.login2);
         register = findViewById(R.id.register2);
