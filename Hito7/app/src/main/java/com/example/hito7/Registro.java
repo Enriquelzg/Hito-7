@@ -54,6 +54,7 @@ public class Registro extends AppCompatActivity {
                     password = contraseña.getText().toString();
                     crearAcount(email,password);
                     startActivity(new Intent(Registro.this, MainActivity.class));
+                    database.writeNewUser(password, email);
                 }
             }
         });
@@ -76,17 +77,18 @@ public class Registro extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
                             database.writeNewUser(password, email);
+                            Log.d(TAG, "createUserWithEmail:success");
+                            Toast.makeText(Registro.this, "Authentication success.",
+                                    Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = mAuth.getCurrentUser();
                             //escribirUsuario(user);
-                            //startActivity(new Intent(Registro.this, MainActivity.class));
+                            startActivity(new Intent(Registro.this, MainActivity.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(Registro.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            database.writeNewUser(password, email);
                             startActivity(new Intent(Registro.this, MainActivity.class));
                         }
                     }

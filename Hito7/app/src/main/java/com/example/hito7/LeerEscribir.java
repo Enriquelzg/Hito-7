@@ -20,8 +20,11 @@ public class LeerEscribir {
     // [START rtdb_write_new_user]
     public void writeNewUser(String password, String email) {
         User user = new User(email, password);
-
         mDatabase.child("users").child(email).setValue(user);
+    }
+
+    public void borrar (){
+        mDatabase.child("users").setValue(null);
     }
 
 }

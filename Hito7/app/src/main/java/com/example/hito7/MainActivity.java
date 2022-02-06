@@ -25,10 +25,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView Login;
     private Button Log, register, borrar;
     private EditText correo, contraseña;
-    private DatabaseReference myDB;
-    private FirebaseDatabase mFDB;
+    private FirebaseDatabase myDB = FirebaseDatabase.getInstance();
     private FirebaseAuth mAuth;
     private String email, password;
+    private DatabaseReference mDataRef = myDB.getReference();
+    private LeerEscribir database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         register = findViewById(R.id.register);
         correo = findViewById(R.id.correo);
         contraseña = findViewById(R.id.contraseña);
+        database = new LeerEscribir(mDataRef);
 
         Log.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                database.borrar();
             }
         });
     }
